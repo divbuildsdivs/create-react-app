@@ -1,0 +1,24 @@
+.book-card {
+    width: 250px;
+    /* border: 5px solid #493D9E; */
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.book-card img {
+    width: 150px;
+    height: 200px;
+    object-fit:contain;
+}
+
+.book-card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+    text-align: center;
+    color: #493D9E;
+}

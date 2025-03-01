@@ -1,0 +1,19 @@
+.header{
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100px;
+    align-items: center;
+    font-size: 30px;
+    background-color: #493D9E;
+    color: white;
+}
+.nav-link {
+    color: #DAD2FF;
+    text-decoration: none;
+    margin: 0 10px;
+}
