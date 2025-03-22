@@ -10,15 +10,16 @@
     align-items: center;
     justify-content: space-between;
 }
-.book-card img {
+.book-card .book-image {
     width: 150px;
     height: 200px;
-    object-fit:contain;
+    object-fit:unset;
 }
 
-.book-card h2 {
+.book-card .book-title {
     font-size: 20px;
     margin: 10px 0;
     text-align: center;
     color: #493D9E;
 }
+

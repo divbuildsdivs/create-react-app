@@ -5,10 +5,10 @@ const Card = ({book}) => {
   return (
     <div className='book-card' >
         <img className='book-image' src={image} alt={`cover for ${title}`} />
-        <h2>{title}</h2>
-        <p>{author.join(',')}</p>
-        <p>{rating}</p>
-        <p>{`£${price}`}</p>
+        <h2 className='book-title'>{title}</h2>
+        <p className='book-author'>{author.join(',')}</p>
+        <p className='book-rating'>{rating}</p>
+        <p className='book-price'>{`£${price}`}</p>
     </div>
   )
 }

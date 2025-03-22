@@ -6,6 +6,7 @@ import Header from './components/Header'
 import CardContainer from './components/CardContainer'
 import SearchComponent from './components/SearchComponent'
 import BooksDashboard from './components/BooksDashboard'
+import GoogleBooks from './components/GoogleBooks'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
     <>
      <Header/>
      <BooksDashboard/>
+     <GoogleBooks/>
     </>
   )
 }
