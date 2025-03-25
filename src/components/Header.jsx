@@ -1,6 +1,7 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap';
 import '../styles/Header.css'
+import LoginButton from './LoginButton';
 
 const Header = () => {
   return (
@@ -21,6 +22,7 @@ const Header = () => {
           </Nav.Link>
         </Nav.Item>
       </Nav>
+      <LoginButton/>
     </div>
   );
 }

@@ -7,15 +7,15 @@ const CardContainer = ({booksList}) => {
   if(booksList.length === 0){
     return (
       <div className='card-container'>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        <ShimmerCard/>
-        </div>
+        <ShimmerCard key={1}/>
+        <ShimmerCard key={2}/>
+        <ShimmerCard key={3}/>
+        <ShimmerCard key={4}/>
+        <ShimmerCard key={5}/>
+        <ShimmerCard key={6}/>
+        <ShimmerCard key={7}/>
+        <ShimmerCard key={8}/>
+      </div>
     ) 
   }
   else {

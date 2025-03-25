@@ -1,32 +1,48 @@
 import React, { useEffect, useState } from "react";
 import CardContainer from "./CardContainer";
+import SearchComponent from "./SearchComponent";
 
 const GoogleBooks = () => {
-    const [books, setBooks] = useState([]);
+    const [booksFromAPI, setBooksFromAPI] = useState([]);
+    const [booksList, setBooksList] = useState([]);
     const booksAPI = "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&filter=paid-ebooks&maxResults=20&orderBy=relevance";
     useEffect(() => {
-        fetch(booksAPI)
-            .then((response) => response.json())
-            .then((data) => setBooks(data.items));
-    }, []);
-    const bookdata = [];
-    books.map((book) => {
-        let bookObject = {
-            id: book.id,
-            title: book?.volumeInfo?.title || "",
-            author: book.volumeInfo?.authors || [],
-            rating: book.volumeInfo?.averageRating || 0,
-            image: book.volumeInfo?.imageLinks?.thumbnail || "",
-            price: book.saleInfo.listPrice.amount || 0,
+        const fetchBooks = async () => {
+          try {
+            const response = await fetch(booksAPI);
+            if(!response.ok){
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            setBooksFromAPI(data.items.map((item) => ({
+                    objectID: item.id,
+                    title: item.volumeInfo?.title || "",
+                    author: item.volumeInfo?.authors || [],
+                    rating: item.volumeInfo?.averageRating || "",
+                    image: item.volumeInfo?.imageLinks?.thumbnail || "",
+                    price: item.saleInfo?.listPrice?.amount || 0,
+                
+            })));
+          } catch (error) {
+            console.error("Failed to fetch books:", error);
+          }
         };
-        if (bookObject) {
-            bookdata.push(bookObject);
-        }
-    });
+      
+        fetchBooks();
+      }, []);
+    
+    useEffect(()=>setBooksList(booksFromAPI), [booksFromAPI])
+    const updateBooksList = (newterm) => {
+        const filteredBooks = booksFromAPI.filter((book) => {
+            return book.title.toLowerCase().includes(newterm.toLowerCase());
+        });
+        setBooksList(filteredBooks);
+    }
     return (
         <div>
-            <h1>Google Books</h1>
-            <CardContainer booksList={bookdata}/>
+            <h1 className="title">Google Books</h1>
+            <SearchComponent updateBooksList ={updateBooksList} />
+            <CardContainer booksList={booksList}/>
         </div>
          
     );
